@@ -1,0 +1,37 @@
+{
+  "name": "ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "rimraf dist && npx tsc",
+    "start": "node dist/src/index.js",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "predev": "npm run build",
+    "dev": "concurrently --raw \"tsc -w\" \"nodemon dist/src/index.js\"",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate -d dist/src/data-source.js",
+
+    "migration:run": "npm run build && ts-node ./node_modules/typeorm/cli.js migration:run -d ./dist/src/data-source.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/express-ejs-layouts": "^2.5.4",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "pg": "^8.13.1",
+    "typeorm": "^0.3.20"
+  }
+}
