@@ -1,10 +1,13 @@
-import { Entity, Column,PrimaryGeneratedColumn,BaseEntity } from 'typeorm'
-
+import { Entity, Column,PrimaryGeneratedColumn,BaseEntity, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { RewardType } from './enum/rewardType';
+import { Moment } from 'moment';
 
 @Entity()
-export class RewardLog extends BaseEntity{
+export class RewardLog {
+
+    
     @PrimaryGeneratedColumn()
-    id:number;
+    id!:number;
 
     
     @Column()
@@ -16,5 +19,16 @@ export class RewardLog extends BaseEntity{
     @Column()
     phone:number;
 
+    @Column({
+        type: "enum",
+        enum: RewardType,
+      })
+      rewardType: RewardType;
+
+    @CreateDateColumn({ select: true, type: "timestamptz"})
+    createdAt?: Moment;
+
+    @UpdateDateColumn({ select: false, type: "timestamptz" })
+    updatedAt?: Moment;
 
 }

@@ -1,10 +1,12 @@
-import { Entity, Column,PrimaryGeneratedColumn,BaseEntity } from 'typeorm'
+import { Entity, Column,PrimaryGeneratedColumn,BaseEntity, OneToMany, Relation, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import { Reward } from './reward';
+import { Moment } from 'moment';
 
 
 @Entity()
-export class User extends BaseEntity{
+export class User {
     @PrimaryGeneratedColumn()
-    id:number;
+    id!:number;
 
     
     @Column()
@@ -19,7 +21,13 @@ export class User extends BaseEntity{
     @Column()
     location:string
 
-    @Column()
-    gender:string
+    @OneToMany("Reward","User",{lazy:true})
+    reward!:Relation<Promise<Reward[]>>;
+
+    @CreateDateColumn({ select: true, type: "timestamptz"})
+    createdAt?: Moment;
+  
+    @UpdateDateColumn({ select: false, type: "timestamptz" })
+    updatedAt?: Moment;
 
 }
