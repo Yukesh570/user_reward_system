@@ -1,5 +1,4 @@
-export enum RewardType {
-    DISCOUNT = "discount",
-    CREDIT = "credit",
-    CASHBACK = "cashback",
-    }
+export enum rewardType{
+    CONSISTENTUSER="consistentUser",
+    TIMELYPAY="timelyPay"
+}

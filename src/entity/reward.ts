@@ -10,6 +10,7 @@ import {
 } from 'typeorm'
 import { User } from './user';
 import { Moment } from "moment";
+import { rewardType } from './enum/rewardType';
 
 
 @Entity()
@@ -17,12 +18,18 @@ export class Reward {
     @PrimaryGeneratedColumn()
     id!:number;
 
-    
     @Column()
     reward:string;
 
     @Column()
     email:string;
+
+    @Column({
+        type:"enum",
+        enum:rewardType
+    })
+    rewardType:rewardType
+
 
     @Column()
     Amount:number;

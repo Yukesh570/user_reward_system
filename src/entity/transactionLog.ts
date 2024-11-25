@@ -14,7 +14,7 @@ export class TransactionLog {
         type: "enum",
         enum: TransactionType,
       })
-      rewardType: TransactionType;
+      prizeType: TransactionType;
 
     @Column()
     email:string;

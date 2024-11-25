@@ -1,6 +1,6 @@
 import { Entity, Column,PrimaryGeneratedColumn,BaseEntity, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { RewardType } from './enum/rewardType';
 import { Moment } from 'moment';
+import { prizeType } from './enum/prizeType';
 
 @Entity()
 export class RewardLog {
@@ -21,12 +21,18 @@ export class RewardLog {
 
     @Column({
         type: "enum",
-        enum: RewardType,
+        enum: prizeType,
       })
-      rewardType: RewardType;
+      prizeType: prizeType;
 
     @CreateDateColumn({ select: true, type: "timestamptz"})
     createdAt?: Moment;
+
+    @CreateDateColumn({ select: true, type: "timestamptz"})
+    meterReadingDate?: Date;
+
+    @CreateDateColumn({ select: true, type: "timestamptz"})
+    paymentDate?: Date;
 
     @UpdateDateColumn({ select: false, type: "timestamptz" })
     updatedAt?: Moment;

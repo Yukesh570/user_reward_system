@@ -8,9 +8,9 @@ import { isBoolean,
     IsNotEmpty
 } from 'class-validator'
 import { Transform, Type } from "class-transformer";
-import { RewardType } from 'entity/enum/rewardType';
+import { prizeType } from 'entity/enum/prizeType';
 
-export class UserCreateBody{
+export class RewardLogCreateBody{
 
 @IsDefined()
 @IsNotEmpty()
@@ -33,9 +33,9 @@ phone:string
 @IsDefined()
 @IsNotEmpty()
 @IsString()
-@IsEnum(RewardType)
+@IsEnum(prizeType)
 @Type(()=>String)
-type:RewardType
+type:prizeType
 
 
 
