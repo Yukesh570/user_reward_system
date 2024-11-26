@@ -10,14 +10,14 @@ export class RewardLog {
     id!:number;
 
     
-    @Column()
+    @Column({ type: "varchar" })
     name:string;
 
-    @Column()
+    @Column({ type: "varchar" })
     email:string;
 
-    @Column()
-    phone:string;
+    @Column({ type: "varchar" })
+    phone:number;
 
     @Column({
         type: "enum",

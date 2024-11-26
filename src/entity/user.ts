@@ -9,16 +9,16 @@ export class User {
     id!:number;
 
     
-    @Column()
+    @Column({ type: "varchar" })
     name:string;
 
-    @Column()
+    @Column({ type: "varchar" })
     email:string;
 
-    @Column()
+    @Column({ type: "varchar" })
     phone:string;
 
-    @Column()
+    @Column({ type: "varchar" })
     location:string
 
     @OneToMany("Reward","User",{lazy:true})

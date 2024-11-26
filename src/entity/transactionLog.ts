@@ -11,18 +11,18 @@ export class TransactionLog {
 
     
     @Column({
-        type: "enum",
-        enum: TransactionType,
-      })
-      prizeType: TransactionType;
+    type: "enum",
+    enum: TransactionType,
+    })
+    prizeType: TransactionType;
 
-    @Column()
+    @Column({ type: "varchar" })
     email:string;
 
-    @Column()
+    @Column({ type: "varchar" })
     Amount:number;
 
-    @Column()
+    @Column({ type: "varchar" })
     typeoftransaction:string
 
     @ManyToOne("User","Transaction",{lazy:true})

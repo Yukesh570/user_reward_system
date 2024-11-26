@@ -18,10 +18,10 @@ export class Reward {
     @PrimaryGeneratedColumn()
     id!:number;
 
-    @Column()
+    @Column({ type: "varchar" })
     reward:string;
 
-    @Column()
+    @Column({ type: "varchar" })
     email:string;
 
     @Column({
@@ -31,7 +31,7 @@ export class Reward {
     rewardType:rewardType
 
 
-    @Column()
+    @Column({ type: "varchar" })
     Amount:number;
 
     @Column({type:"integer",nullable:true})
