@@ -3,6 +3,7 @@ import { User } from "../entity/user"
 import { TransactionDaoHelper } from "../helper/dao"
 import { DeepPartial, Repository, UpdateResult } from "typeorm"
 import { singleton } from "tsyringe";
+import { plainToInstance } from "class-transformer";
 
 
 
@@ -31,4 +32,13 @@ export class UserDao extends TransactionDaoHelper<UserDao>{
     delete(id:number){
         return this.repository.delete({id})
     }
+    async updateAndReturn(id: number, user: DeepPartial<User>): Promise<User> {
+        const data = await this.repository
+          .createQueryBuilder()
+          .update(user)
+          .where("id = :id", { id })
+          .returning("*")
+          .execute();
+        return plainToInstance(User, data.raw[0]);
+      }
 }

@@ -2,8 +2,8 @@ import { UserDao } from "../../dao/userDao";
 import { autoInjectable } from "tsyringe";
 import { NextFunction, Request, Response } from "express";
 import { User } from "../../entity/user";
-import { UserCreateBody, UserEditBody } from "../dataclass/rewardDataClass";
-import { validateBodyInput } from "../helper/validate";
+import { validateBodyInput, validateNumericParam } from "../helper/validate";
+import { UserCreateBody, UserEditBody } from "../dataclass/userDataClass";
 
 
 @autoInjectable()
@@ -37,6 +37,15 @@ export class UserController extends User {
   edit=async(req: Request, res: Response, next: NextFunction):Promise<any>=>{
 
     const {validatedData:validBody,errors}=await validateBodyInput(req,UserEditBody)
+    const id = validateNumericParam(req,"id");
+    const results=await this.userDao.updateAndReturn(id,{...validBody})
+    console.log("=",results)
+    if (!results) return res.status(400).json(errors);
+
+    res.status(200).json({
+      status:"Success",
+      ...results
+    })
   }
 }
 
