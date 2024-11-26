@@ -26,6 +26,7 @@ export type ValidationResult<T> =
  */
 async function validateBodyInput<T>(
   request: Request,
+  
   convertToType: ClassType<T>
 ): Promise<ValidationResult<T>> {
   const convertedBody = convertBody(request, convertToType);

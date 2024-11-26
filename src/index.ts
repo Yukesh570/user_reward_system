@@ -4,14 +4,10 @@ import { router } from './routes/routes'
 const port=8000;
 
 const app = express();
+app.use(express.json());  // This should be before any routes
 
-app.use('/',router)
-app.get("/",(req: Request, res: Response)=>{
-    res.send("helslso ssss");
-});
-app.get("/hi",(req: Request, res: Response)=>{
-    res.send("hi sssswwetaa");
-});
+app.use('/api',router)
+
 
 app.listen(port,async()=>{
     await initializeDB(),

@@ -5,7 +5,8 @@ import { isBoolean,
     IsString,
     IsEmail,
     IsEnum,
-    IsNotEmpty
+    IsNotEmpty,
+    MinLength
 } from 'class-validator'
 import { Transform, Type } from "class-transformer";
 
@@ -25,9 +26,10 @@ email:string
 
 @IsDefined()
 @IsNotEmpty()
-@IsNumber()
-@Type(()=>Number)
-phone:number
+@MinLength(7)
+@IsString()
+@Type(() => String)
+phone: string;
 
 @IsDefined()
 @IsNotEmpty()
@@ -38,3 +40,35 @@ location:string
 
 
 } 
+
+
+
+export class UserEditBody{
+
+    @IsDefined()
+    @IsNotEmpty()
+    @IsString()
+    @Type(()=>String)
+    name:string
+    
+    @IsDefined()
+    @IsNotEmpty()
+    @IsEmail()
+    @Type(()=>String)
+    email:string
+    
+    @IsDefined()
+    @IsNotEmpty()
+    @IsNumber()
+    @Type(()=>Number)
+    phone:number
+    
+    @IsDefined()
+    @IsNotEmpty()
+    @IsString()
+    @Type(()=>String)
+    location:string
+    
+    
+    
+    } 

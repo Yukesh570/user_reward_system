@@ -1,6 +1,6 @@
-import { AppDataSource } from "data-source"
-import { User } from "entity/user"
-import { TransactionDaoHelper } from "helper/dao"
+import { AppDataSource } from "../data-source"
+import { User } from "../entity/user"
+import { TransactionDaoHelper } from "../helper/dao"
 import { DeepPartial, Repository, UpdateResult } from "typeorm"
 import { singleton } from "tsyringe";
 
@@ -11,6 +11,7 @@ export class UserDao extends TransactionDaoHelper<UserDao>{
     public override repository= AppDataSource.getRepository(User);
 
     create(user:Omit<User,"id"|"reward">):Promise<User>{
+        console.log("dao",user)
         return this.repository.save(this.repository.create(user))
     }
 

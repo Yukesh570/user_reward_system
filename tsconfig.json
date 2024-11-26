@@ -22,12 +22,6 @@
   "rules": {
     "quotemark": [true, "single"]
   },
-
-  
-  "include":[
-  "src",
-  "package.json"
-]
 }
 
 

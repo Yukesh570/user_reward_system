@@ -17,7 +17,7 @@ export class RewardLog {
     email:string;
 
     @Column()
-    phone:number;
+    phone:string;
 
     @Column({
         type: "enum",

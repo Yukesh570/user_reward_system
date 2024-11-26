@@ -5,7 +5,8 @@ import { isBoolean,
         IsString,
         IsEmail,
         IsEnum,
-        IsNotEmpty
+        IsNotEmpty,
+        MinLength
 } from 'class-validator'
 import { Transform, Type } from "class-transformer";
 
@@ -25,9 +26,11 @@ email:string
 
 @IsDefined()
 @IsNotEmpty()
-@IsNumber()
-@Type(()=>Number)
-phone:string
+@MinLength(7)
+@IsString()
+@Type(() => String)
+phone: string;
+
 
 @IsDefined()
 @IsNotEmpty()

@@ -11,8 +11,9 @@ export const AppDataSource = new DataSource({
     username:process.env.USER,
     database:process.env.DATABASE,
     entities: ["dist/src/entity/**/*.js"],  // Target compiled JavaScript files
-    migrations:["dist/src/migration/*.js"]
-
+    migrations:["dist/src/migration/*.js"],
+    logging:false,
+    
 })
    
 AppDataSource.initialize()
