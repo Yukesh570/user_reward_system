@@ -1,21 +1,22 @@
-// import { UserController } from "controller/logic/userLogic";
-// import { RewardLog } from "entity/rewardLog";
-// import { Router } from "express";
-// import { catchAsync } from "./helper/catchAsync";
+import { UserController } from "controller/logic/userLogic";
+import { RewardLog } from "entity/rewardLog";
+import { Router } from "express";
+import { catchAsync } from "./helper/catchAsync";
+import { RewardController } from "controller/logic/rewardLogic";
 
 
 
+export function rewardRoute(): Router{
+  //@ts-ignore
 
-// export function rewardRoute(): Router{
+    const controller = new RewardController();
 
-//     const controller = new UserController();
+    const router = Router();
 
-//     const router = Router();
+    router.post(
+        "/create",
+        catchAsync(controller.create)
+    )
 
-//     router.post(
-//         "/create",
-//         catchAsync(controller.create)
-//     )
-
-// return router
-// }
+return router
+}

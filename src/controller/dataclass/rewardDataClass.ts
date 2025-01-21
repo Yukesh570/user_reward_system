@@ -9,14 +9,15 @@ import { isBoolean,
     MinLength
 } from 'class-validator'
 import { Transform, Type } from "class-transformer";
+import { rewardType } from 'entity/enum/rewardType';
 
-export class UserCreateBody{
+export class RewardCreateBody{
 
 @IsDefined()
 @IsNotEmpty()
 @IsString()
 @Type(()=>String)
-name:string
+reward:string
 
 @IsDefined()
 @IsNotEmpty()
@@ -26,16 +27,23 @@ email:string
 
 @IsDefined()
 @IsNotEmpty()
-@MinLength(7)
-@IsString()
-@Type(() => String)
-phone: string;
+@IsEnum(rewardType)
+@Type(()=>String)
+rewardType:rewardType
 
 @IsDefined()
 @IsNotEmpty()
-@IsString()
-@Type(()=>String)
-location:string
+@IsNumber()
+@Type(() => Number)
+Amount: number;
+
+@IsDefined()
+@IsNotEmpty()
+@IsNumber()
+@Type(() => Number)
+userId: number;
+
+
 
 
 
@@ -43,7 +51,7 @@ location:string
 
 
 
-export class UserEditBody{
+export class RewardEditBody{
 
     @IsDefined()
     @IsNotEmpty()

@@ -15,8 +15,8 @@ export class UserController extends User {
      super();
    }
 /**
-   @desc Create companyMemberReward
-   @route POST /api/company/memberReward/create
+   @desc Create user
+   @route POST /api/user/create
    @access private
    **/
 
@@ -33,6 +33,11 @@ export class UserController extends User {
     });
   };
 
+  /**
+   @desc Create user
+   @route POST /api/user/create
+   @access private
+   **/
 
   edit=async(req: Request, res: Response, next: NextFunction):Promise<any>=>{
 
