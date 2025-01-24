@@ -1,8 +1,8 @@
-import { AppDataSource } from "data-source"
-import { TransactionDaoHelper } from "helper/dao"
+import { AppDataSource } from "../data-source"
+import { TransactionDaoHelper } from "../helper/dao"
 import { DeepPartial, Repository, UpdateResult } from "typeorm"
 import { singleton } from "tsyringe";
-import { Reward } from "entity/reward";
+import { Reward } from "../entity/reward";
 
 
 
@@ -25,7 +25,6 @@ export class RewardDao extends TransactionDaoHelper<RewardDao>{
             relations:["user"]
         })
     }
-    
 
     delete(id:number){
         return this.repository.delete({id})

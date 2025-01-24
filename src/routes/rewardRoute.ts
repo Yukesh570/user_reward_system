@@ -2,7 +2,7 @@ import { UserController } from "controller/logic/userLogic";
 import { RewardLog } from "entity/rewardLog";
 import { Router } from "express";
 import { catchAsync } from "./helper/catchAsync";
-import { RewardController } from "controller/logic/rewardLogic";
+import { RewardController } from "../controller/logic/rewardLogic";
 
 
 

@@ -31,10 +31,10 @@ export class Reward {
     rewardType:rewardType
 
 
-    @Column({ type: "varchar" })
-    Amount:number;
+    @Column({ type: "integer" })
+    amount:number;
 
-    @Column({type:"integer",nullable:true})
+    @Column({type:"integer",nullable:true,unique:true})
     userId:number;
     @ManyToOne("User","Reward",{lazy:true})
     user!:Relation<Promise<User>>;

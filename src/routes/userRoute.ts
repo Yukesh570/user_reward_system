@@ -16,11 +16,9 @@ export function userRoute(): Router{
         "/create",
         catchAsync(controller.create)
     )
-    
     router.put(
-        "/edit/:id",
+        "/edit",
         catchAsync(controller.edit)
     )
-
 return router
 }
