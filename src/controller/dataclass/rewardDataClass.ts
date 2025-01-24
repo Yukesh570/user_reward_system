@@ -58,7 +58,7 @@ export class RewardEditBody{
     @IsNotEmpty()
     @IsString()
     @Type(()=>String)
-    name:string
+    reward:string
     
     @IsOptional()
     @IsNotEmpty()
@@ -68,16 +68,21 @@ export class RewardEditBody{
     
     @IsOptional()
     @IsNotEmpty()
-    @IsNumber()
-    @Type(()=>Number)
-    phone:number
+    @IsEnum(rewardType)
+    @Type(()=>String)
+    rewardType:rewardType
     
     @IsOptional()
     @IsNotEmpty()
-    @IsString()
-    @Type(()=>String)
-    location:string
+    @IsNumber()
+    @Type(() => Number)
+    amount: number;
     
+    @IsOptional()
+    @IsNotEmpty()
+    @IsNumber()
+    @Type(() => Number)
+    userId: number;
     
     
     } 

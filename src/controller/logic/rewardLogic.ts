@@ -1,4 +1,4 @@
-import { RewardCreateBody } from "../dataclass/rewardDataClass";
+import { RewardCreateBody, RewardEditBody } from "../dataclass/rewardDataClass";
 import { Reward } from "../../entity/reward";
 import { autoInjectable } from "tsyringe";
 import { NextFunction, Request, Response } from "express";
@@ -39,17 +39,20 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
 }
 /**
    @desc Create reward
-   @route POST /api/reward/create
+   @route POST /api/reward/edit:id
    @access private
    **/
    edit = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
-    const {validatedData:validBody,errors}=await validateBodyInput(req,RewardCreateBody)
+    const id=Number(req.params.id)
+    const {validatedData:validBody,errors}=await validateBodyInput(req,RewardEditBody)
     if (errors)return res.status(400).json(errors);
 
-    const reward= await this.rewardDao.create({
-        ...validBody
-    }
+    const reward= await this.rewardDao.update(
+         id,
+        {...validBody}
     )
+
+    console.log(reward)
 
     res.status(200).json({
         status:"success",
@@ -57,5 +60,22 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
     })
 
 }
+
+/**
+   @desc Create reward
+   @route POST /api/reward/delete:id
+   @access private
+   **/
+
+   delete = async(req:Request,res:Response,next:NextFunction): Promise<any>=>{
+
+    const id = Number(req.params.id)
+    const reward=await this.rewardDao.delete(id)
+    console.log(reward)
+    if (!reward.affected) return res.status(400).json("Data not found");
+    res.status(200).json({
+        status:"Success"
+    })
+   }
 
 }   

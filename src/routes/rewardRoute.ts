@@ -18,5 +18,16 @@ export function rewardRoute(): Router{
         catchAsync(controller.create)
     )
 
+    router.put(
+      "/edit/:id",
+      catchAsync(controller.edit)
+    )
+
+    router.delete(
+      "/delete/:id",
+      catchAsync(controller.delete)
+    )
+
+
 return router
 }

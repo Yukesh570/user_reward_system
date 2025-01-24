@@ -8,7 +8,7 @@
     "start": "node dist/src/index.js",
     "typeorm": "typeorm-ts-node-commonjs",
     "predev": "npm run build",
-    "dev": "concurrently --raw \"tsc -w\" \"nodemon dist/src/index.js\"",
+    "dev": "concurrently --raw \"tsc -w\" \"nodemon -e ts dist/src/index.js \"",
     "migration:generate": "npm run build && typeorm-ts-node-commonjs migration:generate -d dist/src/data-source.js",
     "migration:revert": "ts--node ./node_modules/typeorm/cli.js migration:revert -d dist/src/data-source.js",
     "migration:run": "npm run build && ts-node ./node_modules/typeorm/cli.js migration:run -d ./dist/src/data-source.js"
