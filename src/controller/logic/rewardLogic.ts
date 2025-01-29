@@ -39,7 +39,7 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
 }
 /**
    @desc Create reward
-   @route POST /api/reward/edit:id
+   @route put /api/reward/edit:id
    @access private
    **/
    edit = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
@@ -63,7 +63,7 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
 
 /**
    @desc Create reward
-   @route POST /api/reward/delete:id
+   @route delete /api/reward/delete:id
    @access private
    **/
 
@@ -77,5 +77,24 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
         status:"Success"
     })
    }
+
+
+   /**
+   @desc Create reward
+   @route get /api/reward/getByPanel
+   @access private
+   **/
+
+   getbypanel = async(req:Request,res:Response,next:NextFunction): Promise<any>=>{
+
+    const query=req.query
+    // console.log(reward)
+    // if (!reward.affected) return res.status(400).json("Data not found");
+    // res.status(200).json({
+    //     status:"Success"
+    // })
+   }
+
+
 
 }   
