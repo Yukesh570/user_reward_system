@@ -1,5 +1,5 @@
 import { AppDataSource } from "data-source"
-import { TransactionDaoHelper } from "helper/dao"
+import { TransactionDaoHelper } from "../helper/dao"
 import { DeepPartial, Repository, UpdateResult } from "typeorm"
 import { singleton } from "tsyringe";
 import { RewardLog } from "entity/rewardLog";
@@ -7,7 +7,7 @@ import { RewardLog } from "entity/rewardLog";
 
 
 @singleton()
-export class rewardLogDao extends TransactionDaoHelper<rewardLogDao>{
+export class RewardLogDao extends TransactionDaoHelper<RewardLogDao>{
     public override repository= AppDataSource.getRepository(RewardLog);
 
     create(rewardLog:Omit<RewardLog,"id"|"reward">):Promise<RewardLog>{

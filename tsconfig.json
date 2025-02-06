@@ -1,28 +1,25 @@
 {
   "exclude": ["./node_modules", "./dist"],
   "compilerOptions": {
-    "rootDir": "./",
+    "target": "es2021",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     "lib": ["es5", "es6", "dom", "es2021"],
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "noImplicitOverride": true,
-    "target": "es2021",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "strictPropertyInitialization": false,
-    "experimentalDecorators": true,
+    "experimentalDecorators": true,                   /* Enable experimental support for legacy experimental decorators. */
+    "emitDecoratorMetadata": true,                    /* Emit design-type metadata for decorated declarations in source files. */
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    "rootDir": "./",                                  /* Specify the root folder within your source files. */
+    "moduleResolution": "node",                     /* Specify how TypeScript looks up a file from a given module specifier. */
+    "baseUrl": "src",                                  /* Specify the base directory to resolve non-relative module names. */
     "sourceMap": true,
-    "strict": true,
-    "outDir": "./dist",
-    "strictNullChecks": false,
-    "baseUrl": "./src",
-    "typeRoots": ["./@types", "./node_modules/@types"]
+    "resolveJsonModule": true,                        /* Enable importing .json files. */
+    "outDir": "dist",                                   /* Specify an output folder for all emitted files. */
+    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+    "strict": true,                                      /* Enable all strict type-checking options. */
+    "strictNullChecks": false,                         /* When type checking, take into account 'null' and 'undefined'. */
+    "strictPropertyInitialization": false,             /* Check for class properties that are declared but not set in the constructor. */
+    "noImplicitOverride": true,                       /* Ensure overriding members in derived classes are marked with an override modifier. */
   },
   "rules": {
     "quotemark": [true, "single"]
   },
+  "include": ["src/**/*.ts"],
 }
-
-
-
