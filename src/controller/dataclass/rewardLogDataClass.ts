@@ -18,11 +18,13 @@ export class RewardLogCreateBody{
 @Type(()=>String)
 name:string
 
+
 @IsDefined()
 @IsNotEmpty()
 @IsEmail()
 @Type(()=>String)
 email:string
+
 
 @IsDefined()
 @IsNotEmpty()
@@ -30,13 +32,12 @@ email:string
 @Type(()=>Number)
 phone:string
 
+
 @IsDefined()
 @IsNotEmpty()
 @IsString()
 @IsEnum(prizeType)
 @Type(()=>String)
 type:prizeType
-
-
 
 } 
