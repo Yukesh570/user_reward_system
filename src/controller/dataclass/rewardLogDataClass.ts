@@ -32,7 +32,6 @@ email:string
 @Type(()=>Number)
 phone:string
 
-
 @IsDefined()
 @IsNotEmpty()
 @IsString()
