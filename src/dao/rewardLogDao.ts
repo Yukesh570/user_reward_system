@@ -1,8 +1,8 @@
-import { AppDataSource } from "data-source"
+import { AppDataSource } from "../data-source"
 import { TransactionDaoHelper } from "../helper/dao"
 import { DeepPartial, Repository, UpdateResult } from "typeorm"
 import { singleton } from "tsyringe";
-import { RewardLog } from "entity/rewardLog";
+import { RewardLog } from "../entity/rewardLog";
 
 
 

@@ -8,7 +8,7 @@ import { isBoolean,
     IsNotEmpty
 } from 'class-validator'
 import { Transform, Type } from "class-transformer";
-import { prizeType } from 'entity/enum/prizeType';
+import { prizeType } from '../../entity/enum/prizeType';
 
 export class RewardLogCreateBody{
 
@@ -37,6 +37,6 @@ phone:string
 @IsString()
 @IsEnum(prizeType)
 @Type(()=>String)
-type:prizeType
+prizeType:prizeType
 
 } 

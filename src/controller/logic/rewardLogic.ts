@@ -11,7 +11,7 @@ import { validateBodyInput } from "../helper/validate";
 @autoInjectable()
 export class RewardController extends Reward{
     constructor(
-        public rewardDao:RewardDao
+        private rewardDao:RewardDao
 
     ){
         super()

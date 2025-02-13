@@ -12,7 +12,6 @@ export class UserDao extends TransactionDaoHelper<UserDao>{
     public override repository= AppDataSource.getRepository(User);
 
     create(user:Omit<User,"id"|"reward">):Promise<User>{
-        console.log("dao",user)
         return this.repository.save(this.repository.create(user))
     }
 
