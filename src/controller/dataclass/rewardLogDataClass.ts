@@ -30,7 +30,7 @@ email:string
 @IsNotEmpty()
 @IsNumber()
 @Type(()=>Number)
-phone:string
+phone:number
 
 @IsDefined()
 @IsNotEmpty()

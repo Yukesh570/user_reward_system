@@ -28,7 +28,8 @@ export class RewardLogController extends RewardLog{
 create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
 
     const { validatedData: validBody, errors }=await validateBodyInput(req,RewardLogCreateBody)
-    const log= await this.rewardLogDao.create({...validBody})
+    const data = await plainToInstance(RewardLogCreateBody,req.body)
+    const log= await this.rewardLogDao.create({...data})
 
     console.log("++++",req.body)
 
