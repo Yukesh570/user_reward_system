@@ -35,7 +35,7 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
 
         return res.status(200).json({
         status: "Success",
-        
+        data:log    
         });
 }
 }
