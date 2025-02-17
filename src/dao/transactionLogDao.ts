@@ -11,7 +11,7 @@ import { TransactionLog } from "entity/transactionLog";
 export class TransactionLogDao extends TransactionDaoHelper<TransactionLogDao>{
     public override repository= AppDataSource.getRepository(TransactionLog);
 
-    create(transactionLog:Omit<TransactionLog,"id"|"reward"|"user">):Promise<TransactionLog>{
+    create(transactionLog:Omit<TransactionLog,"id"|"reward"|"user"|"rewardLog">):Promise<TransactionLog>{
         return this.repository.save(this.repository.create(transactionLog))
     }
 

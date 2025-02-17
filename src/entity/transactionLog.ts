@@ -14,25 +14,33 @@ export class TransactionLog {
     type: "enum",
     enum: TransactionType,
     })
-    prizeType: TransactionType;
+    transactionType: TransactionType;
 
     @Column({ type: "varchar" })
     email:string;
 
     @Column({ type: "varchar" })
-    Amount:number;
+    amount:number;
 
-    @Column({ type: "varchar" })
-    typeoftransaction:string
+ 
 
+    @Column({type:"integer",nullable:true,unique:true})
+    userId:number;
     @ManyToOne("User","Transaction",{lazy:true})
     user!:Relation<Promise<User>>
-     
+
+    @Column({type:"integer",nullable:true})
+    rewardId:number;
     @ManyToOne("Reward","Transaction",{lazy:true})
     reward!:Relation<Promise<User>>
 
+    @Column({type:"integer",nullable:true})
+    rewardLogId:number;
     @ManyToOne("RewardLog","Transaction",{lazy:true})
     rewardLog!:Relation<Promise<User>>
+
+
+
     @CreateDateColumn({ select: true, type: "timestamptz"})
     createdAt?: Moment;
   

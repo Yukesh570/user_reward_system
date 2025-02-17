@@ -22,7 +22,7 @@ export class RewardLogController extends RewardLog{
 /**
    @desc Create reward
    @route POST /api/reward/create
-   @access private
+   @access private  
    **/
 
 create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
@@ -30,9 +30,6 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
     const { validatedData: validBody, errors }=await validateBodyInput(req,RewardLogCreateBody)
     const data = await plainToInstance(RewardLogCreateBody,req.body)
     const log= await this.rewardLogDao.create({...data})
-
-    console.log("++++",req.body)
-
         return res.status(200).json({
         status: "Success",
         data:log    

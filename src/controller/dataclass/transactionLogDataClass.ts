@@ -17,7 +17,7 @@ export class TransactionLogCreateBody{
 @IsString()
 @IsEnum(TransactionType)
 @Type(()=>String)
-type:TransactionType
+transactionType:TransactionType
 
 @IsDefined()
 @IsNotEmpty()
@@ -29,25 +29,25 @@ email:string
 @IsNotEmpty()
 @IsNumber()
 @Type(()=>Number)
-Amount:string
+amount:number
 
 @IsDefined()
 @IsNotEmpty()
 @IsNumber()
 @Type(()=>Number)
-userId:string
+userId:number
 
 @IsDefined()
 @IsNotEmpty()
 @IsNumber()
 @Type(()=>Number)
-rewardId:string
+rewardId:number
 
 @IsDefined()
 @IsNotEmpty()
 @IsNumber()
 @Type(()=>Number)
-userewardId:string
+rewardLogId:number
 
 
 
