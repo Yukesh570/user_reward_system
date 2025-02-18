@@ -17,8 +17,12 @@
     "outDir": "./dist",
     "strictNullChecks": false,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src"
-  },
-
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["./*"]
   }
+}
+}
+
+  
 
