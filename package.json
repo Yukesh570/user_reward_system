@@ -4,14 +4,25 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "build": "rimraf dist && npx tsc",
-    "start": "node dist/src/index.js",
+
+    "//": "Development scripts",
+
     "typeorm": "typeorm-ts-node-commonjs",
-    "predev": "npm run build",
-    "dev": "concurrently --raw \"tsc -w\" \"nodemon -e ts dist/src/index.js \"",
-    "migration:generate": "npm run build && typeorm-ts-node-commonjs migration:generate -d dist/src/data-source.js",
-    "migration:revert": "ts--node ./node_modules/typeorm/cli.js migration:revert -d dist/src/data-source.js",
-    "migration:run": "npm run build && ts-node ./node_modules/typeorm/cli.js migration:run -d ./dist/src/data-source.js"
+    "dev": "nodemon -e ts --exec ts-node --project tsconfig.json -r tsconfig-paths/register ./src/index.ts",
+    "migration:dev:generate": "ts-node  -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d ./src/data-source.ts -p",
+    "migration:dev:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/data-source.ts",
+    "migration:dev:revert": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d ./src/data-source.ts",
+
+
+    "//": "Production scripts",
+    "build:server": "tsc -p tsconfig.server.json",
+    "start": "node -r tsconfig-paths/register ./dist/index.js",
+    "migration:generate": "node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d ./dist/data-source.js -p",
+    "migration:run": "node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./dist/data-source.js",
+    "migration:revert": "node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d ./dist/data-source.js"
+    
+
+
   },
   "keywords": [],
   "author": "",
@@ -39,6 +50,7 @@
     "moment": "^2.30.1",
     "pg": "^8.13.1",
     "reflect-metadata": "^0.2.2",
+    "tsconfig-paths": "^4.2.0",
     "tsyringe": "^4.8.0",
     "typeorm": "^0.3.20"
   }

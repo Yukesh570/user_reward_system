@@ -10,8 +10,8 @@ export const AppDataSource = new DataSource({
     password:process.env.PASSWORD,
     username:process.env.USER,
     database:process.env.DATABASE,
-    entities: ["dist/src/entity/**/*.js"],  // Target compiled JavaScript files
-    migrations:["dist/src/migration/*.js"],
+    entities: ["src/entity/**/*.ts"],  // Target compiled JavaScript files
+    migrations:["src/migration/*.ts"],
     logging:false,
     
 })

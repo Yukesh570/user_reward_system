@@ -7,12 +7,12 @@ import { UserCreateBody, UserEditBody } from "../dataclass/userDataClass";
 
 
 @autoInjectable()
-export class UserController extends User {
+export class UserController {
 
   constructor(    
     private userDao:UserDao
    ) {
-     super();
+    
    }
 /**
    @desc Create user

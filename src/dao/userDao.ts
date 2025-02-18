@@ -1,4 +1,4 @@
-import { AppDataSource } from "../data-source"
+import { AppDataSource } from "data-source"
 import { User } from "../entity/user"
 import { TransactionDaoHelper } from "../helper/dao"
 import { DeepPartial, Repository, UpdateResult } from "typeorm"
@@ -8,8 +8,8 @@ import { plainToInstance } from "class-transformer";
 
 
 @singleton()
-export class UserDao extends TransactionDaoHelper<UserDao>{
-    public override repository= AppDataSource.getRepository(User);
+export class UserDao {
+    public  repository= AppDataSource.getRepository(User);
 
     create(user:Omit<User,"id"|"reward">):Promise<User>{
         return this.repository.save(this.repository.create(user))

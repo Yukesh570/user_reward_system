@@ -1,14 +1,13 @@
-import { AppDataSource } from "../data-source"
-import { TransactionDaoHelper } from "../helper/dao"
 import { DeepPartial, Repository, UpdateResult } from "typeorm"
 import { singleton } from "tsyringe";
-import { Reward } from "../entity/reward";
+import { Reward } from "entity/reward";
+import { AppDataSource } from "data-source";
 
 
 
 @singleton()
-export class RewardDao extends TransactionDaoHelper<RewardDao>{
-    public override repository= AppDataSource.getRepository(Reward);
+export class RewardDao{
+    public repository= AppDataSource.getRepository(Reward);
 
     create(reward:Omit<Reward,"id"|"user">):Promise<Reward>{
         return this.repository.save(this.repository.create(reward))
@@ -17,7 +16,6 @@ export class RewardDao extends TransactionDaoHelper<RewardDao>{
     update(id:number,reward:DeepPartial<Reward>):Promise<UpdateResult>{
         return this.repository.update({id},reward)
     }
-
     findById(id:number):Promise<Reward|null>{
         if(!id) return Promise.resolve(null);
         return this.repository.findOne({

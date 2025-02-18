@@ -1,15 +1,18 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 import * as dotenv from 'dotenv'
-
 
 const SECRET_KEY=process.env.JWT_SECRET_KEY;
 
 
 
-export const generateToken =(userId:string
+export const generateToken=<T extends JwtPayload>(
+    payload:T,
+    expiresIn:string,
+
+
 ):string=>{
-    return jwt.sign({userId},SECRET_KEY,{expiresIn:'1d'});
+    return jwt.sign({payload},SECRET_KEY,{expiresIn:expiresIn as any});//{expiresIn:'1d'}
 }   
 
 

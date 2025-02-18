@@ -8,8 +8,8 @@ import { TransactionLog } from "entity/transactionLog";
 
 
 @singleton()
-export class TransactionLogDao extends TransactionDaoHelper<TransactionLogDao>{
-    public override repository= AppDataSource.getRepository(TransactionLog);
+export class TransactionLogDao {
+    public repository= AppDataSource.getRepository(TransactionLog);
 
     create(transactionLog:Omit<TransactionLog,"id"|"reward"|"user"|"rewardLog">):Promise<TransactionLog>{
         return this.repository.save(this.repository.create(transactionLog))

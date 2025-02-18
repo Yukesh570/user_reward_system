@@ -14,13 +14,13 @@ import { TransactionLogCreateBody } from "../dataclass/transactionLogDataClass";
 
 
 @autoInjectable()
-export class TransactionController extends TransactionLog{
+export class TransactionController {
     constructor(
         private transactionLogDao:TransactionLogDao,
         private userDao:UserDao
         
     ){
-        super();
+        
     }
 /**
    @desc Create reward
