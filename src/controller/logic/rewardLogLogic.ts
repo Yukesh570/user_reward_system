@@ -28,6 +28,7 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
 
     const { validatedData: validBody, errors }=await validateBodyInput(req,RewardLogCreateBody)
     const data = await plainToInstance(RewardLogCreateBody,req.body)
+    console.log(";;;;;;;;;;;;",req.headers)
     const log= await this.rewardLogDao.create({...data})
         return res.status(200).json({
         status: "Success",
