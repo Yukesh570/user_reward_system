@@ -2,9 +2,6 @@ import { verifyJwt, verifyToken } from "auth/login";
 import { Request,Response,NextFunction } from "express";
 
 
-
-
-
 export function protect(){
 return async (req: Request, res: Response, next: NextFunction)=>{
   const authHeader = req.headers["authorization"];
