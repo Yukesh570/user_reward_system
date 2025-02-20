@@ -1,11 +1,11 @@
-import { Login } from "entity/auth/login";
+import { Login as login } from "entity/auth/login";
 
 
 
 declare global{
     namespace Express {
         interface Request {
-            user: Login;
+            user: login;
         }
     }
 }

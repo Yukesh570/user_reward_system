@@ -31,7 +31,9 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
     const log= await this.rewardLogDao.create({...data})
         return res.status(200).json({
         status: "Success",
-        data:log    
+        data:log,    
+        user:req.user.username,
+        id:req.user.id
         });
 }
 }
