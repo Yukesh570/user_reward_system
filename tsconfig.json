@@ -18,11 +18,10 @@
     "strictNullChecks": false,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
-    "paths": {
-      "*": ["./*"]
+
   }
 }
-}
+
 
   
 

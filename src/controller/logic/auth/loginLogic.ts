@@ -4,18 +4,15 @@ import { UserDataClass } from "controller/dataclass/auth/loginDataclass";
 import { LoginDao } from "dao/auth/loginDao";
 import { NextFunction, Request, Response } from "express";
 import { autoInjectable } from "tsyringe";
-import { comparePassword, hashPassword, verifyToken } from "auth/login";
+import { comparePassword, hashPassword, verifyJwt, verifyToken } from "auth/login";
 import { generateToken } from "auth/login";
+import { loginJwt } from "utils/jwt/interface";
 
 @autoInjectable()
 export class LoginLogic {
   constructor(private loginDao: LoginDao) {}
 
-  create = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ): Promise<any> => {
+  create = async (req: Request,res: Response,next: NextFunction): Promise<any> => {
     const validBody = plainToInstance(UserDataClass, req.body);
     const errors = await validate(validBody);
     if (errors.length > 0) {
@@ -83,16 +80,21 @@ export class LoginLogic {
     }
     const token = generateToken(
       {
-        id: check.id,
+        userId: check.id,
         username: check.username,
       },
       "1d"
     );
-    const verify= verifyToken(token)
+    await verifyToken<loginJwt>(token)
+    .then((jwtPayload) => {
+    console.log("User ID:", jwtPayload.userId);
+    })
+    .catch((error) => {
+    console.error("Error verifying token:", error.message);
+  });
     return res.status(200).json({
       status: "success",
       token: token,
-      verify:verify
     });
   };
 }
