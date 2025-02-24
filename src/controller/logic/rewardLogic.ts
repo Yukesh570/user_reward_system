@@ -50,9 +50,6 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
          id,
         {...validBody}
     )
-
-    console.log(reward)
-
     res.status(200).json({
         status:"success",
         data:reward
@@ -70,7 +67,6 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
 
     const id = Number(req.params.id)
     const reward=await this.rewardDao.delete(id)
-    console.log(reward)
     if (!reward.affected) return res.status(400).json("Data not found");
     res.status(200).json({
         status:"Success"
@@ -87,7 +83,6 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
    getbypanel = async(req:Request,res:Response,next:NextFunction): Promise<any>=>{
 
     const query=req.query
-    // console.log(reward)
     // if (!reward.affected) return res.status(400).json("Data not found");
     // res.status(200).json({
     //     status:"Success"

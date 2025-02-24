@@ -28,7 +28,6 @@ export class LoginLogic {
       });
     }
 
-    console.log("password", password);
     const check = await this.loginDao.repository.findOne({
       where: { username: validBody.username },
     });
@@ -38,7 +37,6 @@ export class LoginLogic {
       });
     }
     const hashpass = await hashPassword(password);
-    console.log("hashpass", hashPassword);
 
     const data = await this.loginDao.create({
       ...validBody,

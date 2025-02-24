@@ -1,5 +1,4 @@
 import { verifyJwt, verifyToken } from "auth/login";
-import { error } from "console";
 import { AppDataSource } from "data-source";
 import { Login } from "entity/auth/login";
 import { User } from "entity/user";
@@ -48,44 +47,3 @@ export function protect() {
     }
   };
 }
-// export function protect() {
-//   return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-//     try {
-//       const authHeader = req.headers["authorization"];
-//       const token = authHeader && authHeader.split(" ")[1];
-
-//       if (!token) {
-//         res.status(400).json({ message: "Token not provided" });
-//         return;
-//       }
-
-//       const data = await verifyToken<loginJwt>(token);
-//       const user = await getuser(data.userId);
-
-//       if (!user) {
-//         res.status(401).json({ message: "User not found" });
-//         return;
-//       }
-
-//       req.user = user;
-//       next(); // ✅ Call next() properly
-
-//     } catch (e: any) {
-//       let errorMessage = "Invalid token";
-
-//       switch (e.name) {
-//         case "TokenExpiredError":
-//           errorMessage = "Token expired";
-//           break;
-//         case "JsonWebTokenError":
-//           errorMessage = "Invalid token";
-//           break;
-//         case "NotBeforeError":
-//           errorMessage = "Token not active";
-//           break;
-//       }
-
-//       res.status(401).json({ message: errorMessage });
-//     }
-//   };
-// }

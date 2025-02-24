@@ -44,7 +44,6 @@ export class UserController {
     const {validatedData:validBody,errors}=await validateBodyInput(req,UserEditBody)
     const id = validateNumericParam(req,"id");
     const results=await this.userDao.updateAndReturn(id,{...validBody})
-    console.log("=",results)
     if (!results) return res.status(400).json(errors);
 
     res.status(200).json({
