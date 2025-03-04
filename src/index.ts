@@ -7,6 +7,9 @@ const app = express();
 app.use(express.json()); // This should be before any routes
 
 app.use("/api", router);
+app.get("/",(req,res)=>{
+    res.send("working");
+})
 
 app.listen(port, async () => {
   await initializeDB(), console.log(`listening on port ${port}`);
