@@ -3,9 +3,6 @@
 // import { Router } from "express";
 // import { catchAsync } from "./helper/catchAsync";
 
-
-
-
 // export function transactionLogRoute(): Router{
 
 //     const controller = new UserController();
@@ -13,7 +10,7 @@
 //     const router = Router();
 
 //     router.post(
-//         "/create",
+//         "/create",s
 //         catchAsync(controller.create)
 //     )
 

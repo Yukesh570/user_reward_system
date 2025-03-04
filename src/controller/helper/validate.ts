@@ -26,7 +26,7 @@ export type ValidationResult<T> =
  */
 async function validateBodyInput<T>(
   request: Request,
-  
+
   convertToType: ClassType<T>
 ): Promise<ValidationResult<T>> {
   const convertedBody = convertBody(request, convertToType);
@@ -44,7 +44,9 @@ async function validateNormalObject<T>(
   normalObject: object,
   convertToType: ClassType<T>
 ): Promise<ValidationResult<T>> {
-  const convertedBody = plainToInstance(convertToType, normalObject, { exposeUnsetFields: true });
+  const convertedBody = plainToInstance(convertToType, normalObject, {
+    exposeUnsetFields: true,
+  });
   return _validate(convertedBody);
 }
 
@@ -116,7 +118,9 @@ function convert<T>(object: any, toType: ClassType<T>): T {
  * @returns {Promise<ValidationResult<T>>}: Promise of ValidationResult object with validatedData or errors property set.
  */
 async function _validate<T>(obj: T): Promise<ValidationResult<T>> {
-  const validationErrors = await validate(obj as unknown as object, { whitelist: true });
+  const validationErrors = await validate(obj as unknown as object, {
+    whitelist: true,
+  });
   if (validationErrors.length === 0) {
     return { validatedData: obj, errors: undefined };
   }
@@ -124,4 +128,9 @@ async function _validate<T>(obj: T): Promise<ValidationResult<T>> {
   return { errors: response, validatedData: undefined };
 }
 
-export { validateBodyInput, validateQueryInput, validateNumericParam, validateNormalObject };
+export {
+  validateBodyInput,
+  validateQueryInput,
+  validateNumericParam,
+  validateNormalObject,
+};

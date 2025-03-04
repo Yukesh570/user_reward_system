@@ -12,13 +12,17 @@ export async function getuser(userId: number) {
 }
 
 export function protect() {
-  return async (req: Request, res: Response, next: NextFunction):Promise<void> => {
+  return async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
     try {
       const authHeader = req.headers["authorization"];
       const token = authHeader && authHeader.split(" ")[1];
       if (!token) {
-       res.status(400).json({ message: "token not provided" });
-       return
+        res.status(400).json({ message: "token not provided" });
+        return;
       }
       const data = await verifyToken<loginJwt>(token);
 

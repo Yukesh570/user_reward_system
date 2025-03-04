@@ -6,88 +6,93 @@ import { RewardDao } from "../../dao/rewardDao";
 // import { validateBodyInput } from "controller/helper/validate";
 import { validateBodyInput } from "../helper/validate";
 
-
-
 @autoInjectable()
 export class RewardController {
-    constructor(
-        private rewardDao:RewardDao
-
-    ){
-    }
-/**
+  constructor(private rewardDao: RewardDao) {}
+  /**
    @desc Create reward
    @route POST /api/reward/create
    @access private
    **/
-create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
-    const {validatedData:validBody,errors}=await validateBodyInput(req,RewardCreateBody)
-    if (errors)return res.status(400).json(errors);
-    if (req.user.userType !== "admin") return res.status(401).json({ message: "Unauthorized" });
-    const reward= await this.rewardDao.create({
-        ...validBody,
-    }
-    )
+  create = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> => {
+    const { validatedData: validBody, errors } = await validateBodyInput(
+      req,
+      RewardCreateBody
+    );
+    if (errors) return res.status(400).json(errors);
+    if (req.user.userType !== "admin")
+      return res.status(401).json({ message: "Unauthorized" });
+    const reward = await this.rewardDao.create({
+      ...validBody,
+    });
 
     res.status(200).json({
-        status:"success",
-        data:reward
-    })
-
-}
-/**
+      status: "success",
+      data: reward,
+    });
+  };
+  /**
    @desc Create reward
    @route put /api/reward/edit:id
    @access private
    **/
-   edit = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
-    const id=Number(req.params.id)
-    const {validatedData:validBody,errors}=await validateBodyInput(req,RewardEditBody)
-    if (errors)return res.status(400).json(errors);
+  edit = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> => {
+    const id = Number(req.params.id);
+    const { validatedData: validBody, errors } = await validateBodyInput(
+      req,
+      RewardEditBody
+    );
+    if (errors) return res.status(400).json(errors);
 
-    const reward= await this.rewardDao.update(
-         id,
-        {...validBody}
-    )
+    const reward = await this.rewardDao.update(id, { ...validBody });
     res.status(200).json({
-        status:"success",
-        data:reward
-    })
+      status: "success",
+      data: reward,
+    });
+  };
 
-}
-
-/**
+  /**
    @desc Create reward
    @route delete /api/reward/delete:id
    @access private
    **/
 
-   delete = async(req:Request,res:Response,next:NextFunction): Promise<any>=>{
-
-    const id = Number(req.params.id)
-    const reward=await this.rewardDao.delete(id)
+  delete = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> => {
+    const id = Number(req.params.id);
+    const reward = await this.rewardDao.delete(id);
     if (!reward.affected) return res.status(400).json("Data not found");
     res.status(200).json({
-        status:"Success"
-    })
-   }
+      status: "Success",
+    });
+  };
 
-
-   /**
+  /**
    @desc Create reward
    @route get /api/reward/getByPanel
    @access private
    **/
 
-   getbypanel = async(req:Request,res:Response,next:NextFunction): Promise<any>=>{
-
-    const query=req.query
+  getbypanel = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> => {
+    const query = req.query;
     // if (!reward.affected) return res.status(400).json("Data not found");
     // res.status(200).json({
     //     status:"Success"
     // })
-   }
-
-
-
-}   
+  };
+}

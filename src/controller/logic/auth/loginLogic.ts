@@ -1,6 +1,9 @@
 import { plainToInstance } from "class-transformer";
 import { validate } from "class-validator";
-import { UserCreateDataClass, UserDataClass } from "controller/dataclass/auth/loginDataclass";
+import {
+  UserCreateDataClass,
+  UserDataClass,
+} from "controller/dataclass/auth/loginDataclass";
 import { LoginDao } from "dao/auth/loginDao";
 import { NextFunction, Request, Response } from "express";
 import { autoInjectable } from "tsyringe";
@@ -59,10 +62,9 @@ export class LoginLogic {
     delete data.password;
     return res.status(200).json({
       status: "success",
-      data:data
+      data: data,
     });
   };
-
 
   /**
  @desc login user

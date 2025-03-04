@@ -32,8 +32,8 @@ export class RewardLog {
     nullable: true,
   })
   rewardId: number;
-  @ManyToOne("Reward","RewardLogs",{lazy:true}) 
-  reward!:Relation<Promise<Reward>>
+  @ManyToOne("Reward", "RewardLogs", { lazy: true })
+  reward!: Relation<Promise<Reward>>;
 
   @CreateDateColumn({ select: true, type: "timestamptz" })
   createdAt?: Moment;

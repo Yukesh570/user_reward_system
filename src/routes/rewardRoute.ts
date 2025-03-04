@@ -3,35 +3,28 @@ import { catchAsync } from "./helper/catchAsync";
 import { RewardController } from "../controller/logic/rewardLogic";
 import { protect } from "middleware/auth";
 
-
-
-export function rewardRoute(): Router{
+export function rewardRoute(): Router {
   //@ts-expect-error
 
-    const controller = new RewardController();
+  const controller = new RewardController();
 
-    const router = Router();
+  const router = Router();
 
-    router.post(
-        "/create",
-        protect(),
-        
-        catchAsync(controller.create)
-    )
+  router.post(
+    "/create",
+    protect(),
 
-    router.put(
-      "/edit/:id",
-      protect(),
-      
-      catchAsync(controller.edit)
-    )
+    catchAsync(controller.create)
+  );
 
-    router.delete(
-      "/delete/:id",
-      protect(),
-      catchAsync(controller.delete)
-    )
+  router.put(
+    "/edit/:id",
+    protect(),
 
+    catchAsync(controller.edit)
+  );
 
-return router
+  router.delete("/delete/:id", protect(), catchAsync(controller.delete));
+
+  return router;
 }

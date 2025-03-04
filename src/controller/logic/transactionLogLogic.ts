@@ -12,31 +12,32 @@ import { TransactionLog } from "../../entity/transactionLog";
 import { TransactionLogDao } from "../../dao/transactionLogDao";
 import { TransactionLogCreateBody } from "../dataclass/transactionLogDataClass";
 
-
 @autoInjectable()
 export class TransactionController {
-    constructor(
-        private transactionLogDao:TransactionLogDao,
-        private userDao:UserDao
-        
-    ){
-        
-    }
-/**
+  constructor(
+    private transactionLogDao: TransactionLogDao,
+    private userDao: UserDao
+  ) {}
+  /**
    @desc Create reward
    @route POST /api/reward/create
    @access private  
    **/
 
-create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
-
-    const { validatedData: validBody, errors }=await validateBodyInput(req,TransactionLogCreateBody)
-    const data = await plainToInstance(TransactionLogCreateBody,req.body)
-    const log= await this.transactionLogDao.create({...data})
-        return res.status(200).json({
-        status: "Success",
-        data:log    
-        });
+  create = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> => {
+    const { validatedData: validBody, errors } = await validateBodyInput(
+      req,
+      TransactionLogCreateBody
+    );
+    const data = await plainToInstance(TransactionLogCreateBody, req.body);
+    const log = await this.transactionLogDao.create({ ...data });
+    return res.status(200).json({
+      status: "Success",
+      data: log,
+    });
+  };
 }
-}
-

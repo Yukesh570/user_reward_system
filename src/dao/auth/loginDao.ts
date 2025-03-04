@@ -8,12 +8,11 @@ import { DeepPartial, UpdateResult } from "typeorm";
 export class LoginDao {
   public repository = AppDataSource.getRepository(Login);
 
-    create(login: Omit<Login, "id" >): Promise<Login> {
-        return this.repository.save(this.repository.create(login));
-    }
+  create(login: Omit<Login, "id">): Promise<Login> {
+    return this.repository.save(this.repository.create(login));
+  }
 
-    update(id: number, user: DeepPartial<Login>): Promise<UpdateResult> {
-        return this.repository.update({ id }, user);
-    }   
-
+  update(id: number, user: DeepPartial<Login>): Promise<UpdateResult> {
+    return this.repository.update({ id }, user);
+  }
 }

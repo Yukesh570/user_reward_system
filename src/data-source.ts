@@ -1,27 +1,28 @@
 import { DataSource } from "typeorm";
-import * as dotenv from 'dotenv'
+import * as dotenv from "dotenv";
 
-dotenv.config({path:"./.env"});
+dotenv.config({ path: "./.env" });
 
 export const AppDataSource = new DataSource({
-    type:"postgres",
-    host:process.env.HOST,
-    port:parseInt(process.env.PORT)!,
-    password:process.env.PASSWORD,
-    username:process.env.USER,
-    database:process.env.DATABASE,
-    entities:
-    process.env.ENV === "local" ? ["src/entity/**/*.ts"] : ["dist/entity/**/*.js"],
-    // entities: ["src/entity/**/*.ts"],  // Target compiled JavaScript files
-    migrations:["src/migration/*.ts"],
-    logging:false,
-    
-})
-   
+  type: "postgres",
+  host: process.env.HOST,
+  port: parseInt(process.env.PORT)!,
+  password: process.env.PASSWORD,
+  username: process.env.USER,
+  database: process.env.DATABASE,
+  entities:
+    process.env.ENV === "local"
+      ? ["src/entity/**/*.ts"]
+      : ["dist/entity/**/*.js"],
+  // entities: ["src/entity/**/*.ts"],  // Target compiled JavaScript files
+  migrations: ["src/migration/*.ts"],
+  logging: false,
+});
+
 AppDataSource.initialize()
-    .then(() => {
-        console.log('Data Source has been initialized!');
-    })
-    .catch((error) => {
-        console.log('Error during Data Source initialization:', error);
-    });
+  .then(() => {
+    console.log("Data Source has been initialized!");
+  })
+  .catch((error) => {
+    console.log("Error during Data Source initialization:", error);
+  });

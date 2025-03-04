@@ -1,4 +1,4 @@
-export enum criteriaType{
-    CONSISTENTUSER="consistentUser",
-    TIMELYPAY="timelyPay"
+export enum criteriaType {
+  CONSISTENTUSER = "consistentUser",
+  TIMELYPAY = "timelyPay",
 }

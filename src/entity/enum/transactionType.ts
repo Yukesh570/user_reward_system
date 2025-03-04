@@ -1,4 +1,4 @@
 export enum TransactionType {
-    OnlinePayment = "OnlinePayment",
-    Cash = "Cash",
-  }
+  OnlinePayment = "OnlinePayment",
+  Cash = "Cash",
+}
