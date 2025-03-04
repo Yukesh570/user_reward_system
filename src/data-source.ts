@@ -10,6 +10,8 @@ export const AppDataSource = new DataSource({
   password: process.env.PASSWORD,
   username: process.env.USER,
   database: process.env.DATABASE,
+  ssl: { rejectUnauthorized: false }, // Add this
+
   entities:
     process.env.ENV === "local"
       ? ["src/entity/**/*.ts"]
