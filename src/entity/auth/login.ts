@@ -1,3 +1,4 @@
+import { userType } from "entity/enum/userType";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 
@@ -16,4 +17,7 @@ export class Login {
 
     @Column({ type: "varchar" })
     password:string;
+
+    @Column({ type: "enum", enum: userType })
+    userType: userType;
 }

@@ -2,6 +2,7 @@ import { Entity, Column,PrimaryGeneratedColumn,BaseEntity, ManyToOne, Relation, 
 import { User } from './user';
 import { TransactionType } from './enum/transactionType';
 import { Moment } from 'moment';
+import { RewardLog } from './rewardLog';
 
 
 @Entity()
@@ -36,8 +37,8 @@ export class TransactionLog {
 
     @Column({type:"integer",nullable:true})
     rewardLogId:number;
-    @ManyToOne("RewardLog","Transaction",{lazy:true})
-    rewardLog!:Relation<Promise<User>>
+    @ManyToOne("RewardLog","Transactions",{lazy:true})
+    rewardLog!:Relation<Promise<RewardLog>>
 
 
 

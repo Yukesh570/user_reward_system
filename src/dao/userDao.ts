@@ -11,7 +11,7 @@ import { plainToInstance } from "class-transformer";
 export class UserDao {
     public  repository= AppDataSource.getRepository(User);
 
-    create(user:Omit<User,"id"|"reward">):Promise<User>{
+    create(user:Omit<User,"id"|"reward"|"user">):Promise<User>{
         return this.repository.save(this.repository.create(user))
     }
 

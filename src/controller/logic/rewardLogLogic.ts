@@ -33,7 +33,8 @@ create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
         status: "Success",
         data:log,    
         user:req.user.username,
-        id:req.user.id
+        id:req.user.id,
+        userType:req.user.userType
         });
 }
 }

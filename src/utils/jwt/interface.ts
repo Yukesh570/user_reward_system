@@ -14,4 +14,5 @@ export interface JwtPayload {
 export interface loginJwt extends JwtPayload{
     userId:number
     username:string
+    userType:string
 }

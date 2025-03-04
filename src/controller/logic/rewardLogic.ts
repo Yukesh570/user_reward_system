@@ -23,10 +23,9 @@ export class RewardController {
 create = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
     const {validatedData:validBody,errors}=await validateBodyInput(req,RewardCreateBody)
     if (errors)return res.status(400).json(errors);
-
+    if (req.user.userType !== "admin") return res.status(401).json({ message: "Unauthorized" });
     const reward= await this.rewardDao.create({
-        ...validBody
-
+        ...validBody,
     }
     )
 

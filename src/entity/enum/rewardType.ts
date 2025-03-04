@@ -1,4 +1,4 @@
-export enum rewardType{
+export enum criteriaType{
     CONSISTENTUSER="consistentUser",
     TIMELYPAY="timelyPay"
 }

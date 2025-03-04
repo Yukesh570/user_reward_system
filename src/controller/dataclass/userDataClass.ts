@@ -38,7 +38,11 @@ phone: string;
 @Type(()=>String)
 location:string
 
-
+@IsDefined()
+@IsNotEmpty()
+@IsNumber()
+@Type(()=>Number)
+userId:number
 
 } 
 
@@ -63,6 +67,11 @@ email:string
 @Type(() => String)
 phone: string;
 
+@IsDefined()
+@IsNotEmpty()
+@IsNumber()
+@Type(()=>Number)
+userId:number
 
 @IsDefined()
 @IsNotEmpty()

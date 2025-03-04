@@ -9,7 +9,7 @@ import { AppDataSource } from "data-source";
 export class RewardDao{
     public repository= AppDataSource.getRepository(Reward);
 
-    create(reward:Omit<Reward,"id"|"user">):Promise<Reward>{
+    create(reward:Omit<Reward,"id">):Promise<Reward>{
         return this.repository.save(this.repository.create(reward))
     }
 

@@ -10,7 +10,8 @@ import {
 } from 'typeorm'
 import { User } from './user';
 import { Moment } from "moment";
-import { rewardType } from './enum/rewardType';
+import { criteriaType } from './enum/rewardType';
+import { prizeType } from './enum/prizeType';
 
 
 @Entity()
@@ -21,24 +22,18 @@ export class Reward {
     @Column({ type: "varchar" })
     reward:string;
 
-    @Column({ type: "varchar" })
-    email:string;
-
     @Column({
         type:"enum",
-        enum:rewardType
+        enum:criteriaType
     })
-    rewardType:rewardType
+    criteriaType:criteriaType
 
-
-    @Column({ type: "integer" })
-    amount:number;
-
-    @Column({type:"integer",nullable:true,unique:true})
-    userId:number;
-    @ManyToOne("User","Reward",{lazy:true})
-    user!:Relation<Promise<User>>;
-
+    @Column({
+        type: "enum",
+        enum: prizeType,
+      })
+      prizeType: prizeType;
+      
     @CreateDateColumn({ select: true, type: "timestamptz"})
     createdAt?: Moment;
   

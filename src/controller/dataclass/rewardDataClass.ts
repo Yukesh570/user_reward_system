@@ -9,8 +9,8 @@ import { isBoolean,
     MinLength
 } from 'class-validator'
 import { Transform, Type } from "class-transformer";
-import { rewardType } from "../../entity/enum/rewardType"
-// import { rewardType } from "controller/entity/enum/rewardType";
+import { criteriaType } from 'entity/enum/rewardType';
+import { prizeType } from 'entity/enum/prizeType';
 
 export class RewardCreateBody{
 
@@ -20,29 +20,20 @@ export class RewardCreateBody{
 @Type(()=>String)
 reward:string
 
+
+
 @IsDefined()
 @IsNotEmpty()
-@IsEmail()
+@IsEnum(criteriaType)
 @Type(()=>String)
-email:string
+criteriaType:criteriaType
 
 @IsDefined()
 @IsNotEmpty()
-@IsEnum(rewardType)
+@IsEnum(prizeType)
 @Type(()=>String)
-rewardType:rewardType
+prizeType:prizeType
 
-@IsDefined()
-@IsNotEmpty()
-@IsNumber()
-@Type(() => Number)
-amount: number;
-
-@IsDefined()
-@IsNotEmpty()
-@IsNumber()
-@Type(() => Number)
-userId: number;
 
 
 
@@ -60,29 +51,21 @@ export class RewardEditBody{
     @Type(()=>String)
     reward:string
     
+
     @IsOptional()
     @IsNotEmpty()
-    @IsEmail()
+    @IsEnum(criteriaType)
     @Type(()=>String)
-    email:string
+    criteriaType:criteriaType
     
-    @IsOptional()
+
+    @IsDefined()
     @IsNotEmpty()
-    @IsEnum(rewardType)
+    @IsEnum(prizeType)
     @Type(()=>String)
-    rewardType:rewardType
+    prizeType:prizeType
     
-    @IsOptional()
-    @IsNotEmpty()
-    @IsNumber()
-    @Type(() => Number)
-    amount: number;
-    
-    @IsOptional()
-    @IsNotEmpty()
-    @IsNumber()
-    @Type(() => Number)
-    userId: number;
+
     
     
     } 
