@@ -5,6 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "//": "Production scripts",
+    "//": "Production scripts",
     "typeorm": "typeorm-ts-node-commonjs",
     "dev": "nodemon -e ts --exec ts-node --project tsconfig.json -r tsconfig-paths/register ./src/index.ts",
     "migration:dev:generate": "ts-node  -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d ./src/data-source.ts -p",
