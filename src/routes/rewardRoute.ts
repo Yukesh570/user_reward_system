@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { catchAsync } from "./helper/catchAsync";
 import { RewardController } from "../controller/logic/rewardLogic";
-import { protect } from "middleware/auth";
+import { protect } from "../middleware/auth";
 
 export function rewardRoute(): Router {
   //@ts-expect-error

@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  postgres_local:
+    image: postgres:13
+    container_name: postgres_local_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}  
+    volumes:
+      - ./postgres-local-data:/var/lib/postgresql/data  # Store data locally on your machine
+    ports:
+      - "5433:5432" 
+  postgres_online:
+    image: postgres:13
+
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}  
+      POSTGRES_PORT: ${POSTGRES_PORT}   
+      POSTGRES_HOST: ${POSTGRES_HOST} 
+      DATABASE_URL: ${DATABASE_URL}
+
+    depends_on:
+      - postgres_local
+
+
+  backend:
+    restart: always
+    container_name: backend
+    depends_on:
+      - postgres_local
+    build: 
+      context: .
+      dockerfile: ./docker/Dockerfile
+
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
