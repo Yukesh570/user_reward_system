@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { catchAsync } from "./helper/catchAsync";
 import { UserController } from "../controller/logic/userLogic";
-import { protect } from "middleware/auth";
+import { protect } from "../middleware/auth";
 
 export function userRoute(): Router {
   //@ts-ignore

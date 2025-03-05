@@ -1,6 +1,6 @@
-import { LoginLogic } from "controller/logic/auth/loginLogic";
+import { LoginLogic } from "../../controller/logic/auth/loginLogic";
 import { Router } from "express";
-import { catchAsync } from "routes/helper/catchAsync";
+import { catchAsync } from "../../routes/helper/catchAsync";
 
 export function authRoute(): Router {
   //@ts-ignore

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { catchAsync } from "./helper/catchAsync";
 import { RewardLogController } from "../controller/logic/rewardLogLogic";
-import { protect } from "middleware/auth";
+import { protect } from "../middleware/auth";
 
 export function rewardLogRoute(): Router {
   //@ts-ignore

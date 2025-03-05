@@ -3,18 +3,17 @@ import { validate } from "class-validator";
 import {
   UserCreateDataClass,
   UserDataClass,
-} from "controller/dataclass/auth/loginDataclass";
-import { LoginDao } from "dao/auth/loginDao";
+} from "../../../controller/dataclass/auth/loginDataclass";
+import { LoginDao } from "../../../dao/auth/loginDao";
 import { NextFunction, Request, Response } from "express";
 import { autoInjectable } from "tsyringe";
 import {
   comparePassword,
   hashPassword,
-  verifyJwt,
+  generateToken,
   verifyToken,
-} from "auth/login";
-import { generateToken } from "auth/login";
-import { loginJwt } from "utils/jwt/interface";
+} from "../../../auth/login";
+import { loginJwt } from "../../../utils/jwt/interface";
 
 @autoInjectable()
 export class LoginLogic {

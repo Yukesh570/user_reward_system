@@ -16,13 +16,10 @@
     "strict": true,
     "outDir": "./dist",
     "strictNullChecks": false,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "typeRoots": ["./@types", "./node_modules/@types"]
-
+  },
+  "rules": {
+    "quotemark": [true, "single"]
   }
 }
-
-
-  
-

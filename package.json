@@ -4,26 +4,22 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-
-    "//": "Development scripts",
-
+    "//": "Production scripts",
     "typeorm": "typeorm-ts-node-commonjs",
     "dev": "nodemon -e ts --exec ts-node --project tsconfig.json -r tsconfig-paths/register ./src/index.ts",
     "migration:dev:generate": "ts-node  -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d ./src/data-source.ts -p",
     "migration:dev:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/data-source.ts",
     "migration:dev:revert": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d ./src/data-source.ts",
-
-
-    "//": "Production scripts",
-    "build:server": "tsc -p tsconfig.server.json",
-    "start": "node -r tsconfig-paths/register ./dist/index.js",
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && tsc -p tsconfig.server.json",
+    "server": "node dist/src/index.js",
     "migration:generate": "node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d ./dist/data-source.js -p",
     "migration:run": "node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./dist/data-source.js",
     "migration:revert": "node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d ./dist/data-source.js"
-    
-
-
   },
+  "pre-commit": [
+    "build"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -33,6 +29,7 @@
     "@types/node": "^22.9.0",
     "concurrently": "^9.1.0",
     "nodemon": "^3.1.7",
+    "pre-commit": "^1.2.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   },

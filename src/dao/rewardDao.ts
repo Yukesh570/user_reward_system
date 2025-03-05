@@ -1,7 +1,7 @@
 import { DeepPartial, Repository, UpdateResult } from "typeorm";
 import { singleton } from "tsyringe";
-import { Reward } from "entity/reward";
-import { AppDataSource } from "data-source";
+import { Reward } from "../entity/reward";
+import { AppDataSource } from "../data-source";
 
 @singleton()
 export class RewardDao {
