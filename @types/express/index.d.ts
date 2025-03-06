@@ -1,4 +1,4 @@
-import { Login as login } from "src/entity/auth/login";
+import { Login as login } from "entity/auth/login";
 
 
 

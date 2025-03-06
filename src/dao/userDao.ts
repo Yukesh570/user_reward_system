@@ -1,9 +1,10 @@
-import { AppDataSource } from "../data-source";
+// import { AppDataSource } from "../data-source";
 import { User } from "../entity/user";
 import { TransactionDaoHelper } from "../helper/dao";
 import { DeepPartial, Repository, UpdateResult } from "typeorm";
 import { singleton } from "tsyringe";
 import { plainToInstance } from "class-transformer";
+import { AppDataSource } from "data-source";
 
 @singleton()
 export class UserDao {

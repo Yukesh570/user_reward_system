@@ -35,6 +35,8 @@ services:
     build: 
       context: .
       dockerfile: ./docker/Dockerfile
+    environment:
+      NODE_PATH: ./src
 
     env_file:
       - .env
