@@ -28,6 +28,7 @@ export async function verifyJwt<T extends JwtPayload>(
 ): Promise<T> {
   return await promisify<string, string, any>(jwt.verify)(token, secretKey);
 }
+
 export const hashPassword = async (password: string): Promise<string> => {
   const salt = await bcrypt.genSalt(10);
   return bcrypt.hash(password, salt);
