@@ -1,4 +1,4 @@
-import { verifyJwt, verifyToken } from "../auth/login";
+import { verifyToken } from "../auth/login";
 import { AppDataSource } from "../data-source";
 import { Login } from "../entity/auth/login";
 import { User } from "../entity/user";

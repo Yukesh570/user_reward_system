@@ -90,9 +90,6 @@ export class RewardController {
     next: NextFunction
   ): Promise<any> => {
     const query = req.query;
-    // if (!reward.affected) return res.status(400).json("Data not found");
-    // res.status(200).json({
-    //     status:"Success"
-    // })
+
   };
 }

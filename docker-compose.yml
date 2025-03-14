@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}  
     volumes:
-      - ./postgres-local-data:/var/lib/postgresql/data  # Store data locally on your machine
+      - ./postgres-local-data:/var/lib/postgresql/data  # Store data locally on your machine the mapping works both ways  
     ports:
       - "5433:5432" 
   postgres_online:
