@@ -5,7 +5,6 @@
   "type": "commonjs",
   "scripts": {
     "//": "Production scripts",
-    "//": "Production scripts",
     "typeorm": "typeorm-ts-node-commonjs",
     "dev": "nodemon -e ts --exec ts-node --project tsconfig.json -r tsconfig-paths/register ./src/index.ts",
     "migration:dev:generate": "ts-node  -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d ./src/data-source.ts -p",
@@ -26,18 +25,20 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/amqplib": "^0.10.7",
     "@types/jsonwebtoken": "^9.0.8",
     "@types/node": "^22.9.0",
     "concurrently": "^9.1.0",
     "nodemon": "^3.1.7",
     "pre-commit": "^1.2.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.8.2"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.0",
     "@types/express-ejs-layouts": "^2.5.4",
+    "amqplib": "^0.10.5",
     "bcryptjs": "^3.0.0",
     "class-transformer": "^0.5.1",
     "class-transformer-validator": "^0.9.1",
