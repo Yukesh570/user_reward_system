@@ -1,20 +1,20 @@
-name:Node.js 
+name: Node.js CI/CD Pipeline
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger the workflow when pushing to the main branch
 
 jobs:
-  build-and-deploy
-    runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner
 
-    step:
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Docker Buildx
-        uses:dokcer/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v2
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -23,16 +23,15 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Docker Images
-        run:  |
-          docker build -t ${{secrets.DOCKER_USERNAME}}/backend:latest -f docker/DockerFile .
-          docker push ${{secrets.DOCKER_USERNAME}}/backend:latest
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/backend:latest -f docker/Dockerfile .
+          docker push ${{ secrets.DOCKER_USERNAME }}/backend:latest
 
       - name: Deploy to Remote Server
         env:
-          REMOTE_USER:${{secrets.REMOTE_USER}}
-          REMOTE_HOST:${{secrets.REMOTE_HOST}}
-          SSH_PASSWORD:${{secrets.SSH_PASSWORD}}
-
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
         run: |
           sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no -p 54422 $REMOTE_USER@$REMOTE_HOST << 'EOF'
             cd /var/www/user_reward_system
